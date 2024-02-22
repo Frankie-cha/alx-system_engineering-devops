@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+hour=0
+minute=1
+
+# Define the condition for the while loop
+while [ $hour -le 12 ] && [ $minute -le 59 ]
+do
+    # Print the time
+    printf "%02d:%02d\n" $hour $minute
+    
+    # Increment minute
+    ((minute++))
+    
+    # If minute reaches 60, reset it to 0 and increment hour
+    if [ $minute -eq 60 ]; then
+        minute=0
+        ((hour++))
+    fi
+done | head -n 70
