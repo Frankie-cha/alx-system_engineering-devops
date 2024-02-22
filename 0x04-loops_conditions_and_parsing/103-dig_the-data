@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+awk '{count[$1" "$9]++} END {for (ip_code in count) print count[ip_code], ip_code}' apache-access.log | sort -nr

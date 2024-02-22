@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+file="/etc/passwd"
+
+# Use IFS to read the file by colon
+while IFS=':' read -r username x userid groupid user_info homedir shell; do
+    # Extracting user's full name and password from user_info field
+    IFS=',' read -r full_name pass_info <<< "$user_info"
+    IFS='=' read -r dummy password <<< "$pass_info"
+    
+    # Displaying user information
+    echo "The user $username is part of the $groupid gang, lives in $homedir and rides $shell. USER ID's place is protected by the passcode $password, more info about the user here: $full_name"
+done < "$file"
