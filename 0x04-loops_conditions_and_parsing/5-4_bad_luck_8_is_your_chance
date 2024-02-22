@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+counter=1
+
+# Define the condition for the while loop
+while [ $counter -le 10 ]
+do
+    # Check the current iteration and display the appropriate message
+    if [ $counter -eq 4 ]; then
+        echo "bad luck"
+    elif [ $counter -eq 8 ]; then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    
+    # Increment the counter
+    ((counter++))
+done
