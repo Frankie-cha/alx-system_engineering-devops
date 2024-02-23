@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Display header
+printf "%-10s %-20s %-20s %-10s %-10s %s\n" "PID" "USER" "COMMAND" "PPID" "TTY" "ARGS"
+echo "======================================================================"
+
+# Fetch process information using 'ps' command
+# Display in a user-friendly format
+ps axo pid,user,comm,ppid,tty,args --forest | \
+awk 'NR>1 { printf "%-10s %-20s %-20s %-10s %-10s %s\n", $1, $2, $3, $4, $5, $6 }'
