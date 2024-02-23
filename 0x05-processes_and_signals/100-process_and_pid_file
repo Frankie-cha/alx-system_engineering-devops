@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Define the path to the PID file
+PID_FILE="/var/run/myscript.pid"
+
+# Function to handle SIGTERM signal
+handle_sigterm() 
+{
+    echo "I hate the kill command"
+}
+
+# Function to handle SIGINT signal
+handle_sigint() 
+{
+    echo "Y U no love me?!"
+}
+
+# Function to handle SIGQUIT signal
+handle_sigquit() 
+{
+    echo "Deleting PID file and terminating script"
+    # Delete the PID file if exists
+    if [ -f "$PID_FILE" ]; then
+        rm "$PID_FILE"
+    fi
+    # Terminate the script
+    exit 0
+}
+
+# Trap signals and call respective functions
+trap handle_sigterm SIGTERM
+trap handle_sigint SIGINT
+trap handle_sigquit SIGQUIT
+
+# Write PID to PID file
+echo $$ > "$PID_FILE"
+
+# Display messages indefinitely
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
