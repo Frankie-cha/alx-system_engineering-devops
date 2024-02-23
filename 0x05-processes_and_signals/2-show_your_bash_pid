@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# Display lines containing the word 'bash' along with their PIDs
 ps aux | grep bash | grep -v grep
